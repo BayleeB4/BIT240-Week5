@@ -31,8 +31,8 @@
 	function skirmish(){		
 		// Attack
 		if(enemy_health > 0 && human.hp > 0){
-		var playerAttack = enemy_health -= human.damage;
-		var enemyAttack = human.hp -= enemy_damage;
+		var playerAttack = enemy_health = enemy_health - human.damage < 0 ? 0 : enemy_health -= human.damage;
+		var enemyAttack = human.hp = human.hp - enemy_damage < 0 ? 0 : human.hp -= enemy_damage;
 		
 		// Update Health
 		showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human.name + "<br />" + "Health: " + human.hp + "<br />" + "Potions: " + human.potions;
