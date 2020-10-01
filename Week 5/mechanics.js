@@ -4,8 +4,10 @@
 	}
 	
 	// Player Information
+	// Player
 	/*var human_max_health = 100;
 	var human_min_health = 0;
+	// Items
 	var human_max_potions = 3;
 	var human_min_potions = 0;*/
 	var human_name = human.name;
@@ -24,27 +26,25 @@
 	//
 	
 	// Display Stats
-	var showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human.name + "<br />" + "Health: " + human.hp + "<br />" + "Potions: " + human.potions;
+	var showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human_name + "<br />" + "Health: " + human_health + "<br />" + "Potions: " + human_potions;
 	var showEnemyStats = document.getElementById("EnemyStats").innerHTML = "Enemy: " + enemy_name + "<br />"  + "Health: " + enemy_health;
 	//
 	
 	function skirmish(){		
 		// Attack
-		if(enemy_health > 0 && human.hp > 0){
-		var playerAttack = enemy_health = enemy_health - human.damage < 0 ? 0 : enemy_health -= human.damage;
-		var enemyAttack = human.hp = human.hp - enemy_damage < 0 ? 0 : human.hp -= enemy_damage;
+		if(enemy_health > 0 && human_health > 0){
+		var playerAttack = enemy_health = enemy_health - human_damage < 0 ? 0 : enemy_health -= human_damage;
+		var enemyAttack = human_health = human_health - enemy_damage < 0 ? 0 : human_health -= enemy_damage;
 		
 		// Update Health
-		showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human.name + "<br />" + "Health: " + human.hp + "<br />" + "Potions: " + human.potions;
+		showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human_name + "<br />" + "Health: " + human_health + "<br />" + "Potions: " + human_potions;
 		showEnemyStats = document.getElementById("EnemyStats").innerHTML = "Enemy: " + enemy_name + "<br />"  + "Health: " + enemy_health;
 		//
-		console.log(human.hp);
-		//console.log("You hit the enemy for " + playerAttack);
-		//console.log("The monster hit you for  " + enemyAttack);
+		console.log(human_health);
 		}else if(enemy_health <= 0){
 			console.log("You killed the " + enemy_name);
 			alert("The game is over! You win!");
-		}else if (human.hp <= 0){
+		}else if (human_health <= 0){
 			console.log("The " + enemy_name + " killed you!");
 			alert("The game is over! You Lose :(");
 		}
@@ -52,11 +52,11 @@
 	
 	function drinkPotion(){
 		// Drink Potion
-		if(human.hp < 100 && human.potions >= 1){
-			human.hp += 10;
-			human.potions--;
-			showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human.name + "<br />" + "Health: " + human.hp + "<br />" + "Potions: " + human.potions;
-		}else if(human.potions === 0){alert("You have no more potions!");}
+		if(human_health < 100 && human_potions >= 1){
+			human_health = human_health + 10 < 100 ? 100 : human_health += 10;
+			human_potions--;
+			showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human_name + "<br />" + "Health: " + human_health + "<br />" + "Potions: " + human_potions;
+		}else if(human_potions === 0){alert("You have no more potions!");}
 	}
 	
 	function generateRandomNumber(maxNumber){return Math.floor(Math.random()*maxNumber);}
