@@ -55,7 +55,7 @@
 		//
 		console.log(human_health);
 		}else if(enemy_health <= 0){
-			//human_gold += enemy_gold;
+			this.human_gold += this.enemy_gold;
 			console.log("You killed the " + enemy_name);
 			document.getElementById("playerStats").innerHTML = "Player: " + human_name 
 			+ "<br />" + "Health: " + this.human_health 
@@ -81,7 +81,7 @@
 			showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human_name 
 			+ "<br />" + "Health: " + human_health 
 			+ "<br />" + "Potions: " + human_potions
-			+ "<br />" + "Gold: " + human_gold;
+			+ "<br />" + "Gold: " + obtainedGold;
 		}else if(human_potions === 0){alert("You have no more potions!");}
 	}
 	
