@@ -38,27 +38,29 @@
 	+ "<br />"  + "Health: " + enemy_health;
 	//
 	
+	var obtainedGold = enemy_gold += human_gold;
+	
 	function skirmish(){
 		// Attack
 		if(enemy_health > 0 && human_health > 0){
 		var playerAttack = enemy_health = enemy_health - human_damage < 0 ? 0 : enemy_health -= human_damage;
-		var enemyAttack = human_health = human_health - enemy_damage < 0 ? 0 : human_health -= enemy_damage;
+		var enemyAttack = this.human_health = human_health - enemy_damage < 0 ? 0 : human_health -= enemy_damage;
 		
 		// Update Health
 		showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human_name 
-		+ "<br />" + "Health: " + human_health 
-		+ "<br />" + "Potions: " + human_potions
-		+ "<br />" + "Gold: " + human_gold;
+		+ "<br />" + "Health: " + this.human_health 
+		+ "<br />" + "Potions: " + this.human_potions
+		+ "<br />" + "Gold: " + this.human_gold;
 		showEnemyStats = document.getElementById("EnemyStats").innerHTML = "Enemy: " + enemy_name + "<br />"  + "Health: " + enemy_health;
 		//
 		console.log(human_health);
 		}else if(enemy_health <= 0){
-			human_gold += enemy_gold;
+			//human_gold += enemy_gold;
 			console.log("You killed the " + enemy_name);
 			document.getElementById("playerStats").innerHTML = "Player: " + human_name 
-			+ "<br />" + "Health: " + human_health 
-			+ "<br />" + "Potions: " + human_potions
-			+ "<br />" + "Gold: " + human_gold;
+			+ "<br />" + "Health: " + this.human_health 
+			+ "<br />" + "Potions: " + this.human_potions
+			+ "<br />" + "Gold: " + this.human_gold;
 			showKillText = document.getElementById("killText").style.display = "block";
 			showKillText = document.getElementById("killText").innerHTML = "You killed the " + enemy_name + " !";
 			showContinueButton = document.getElementById("playMoreButton").style.display = "inline-block";
@@ -74,8 +76,8 @@
 	function drinkPotion(){
 		// Drink Potion
 		if(human_health < 100 && human_potions >= 1){
-			human_health = human_health + 10 > 100 ? 100 : human_health += 10;
-			human_potions--;
+			this.human_health = human_health + 10 > 100 ? 100 : human_health += 10;
+			this.human_potions--;
 			showPlayerStats = document.getElementById("playerStats").innerHTML = "Player: " + human_name 
 			+ "<br />" + "Health: " + human_health 
 			+ "<br />" + "Potions: " + human_potions
@@ -86,7 +88,7 @@
 	function playMore(){
 		showKillText = document.getElementById("killText").style.display = "none";
 		showContinueButton = document.getElementById("playMoreButton").style.display = "none";
-		showContinueButton = document.getElementById("shopButton").style.display = "none";		
+		showContinueButton = document.getElementById("shopButton").style.display = "none";
 		
 		var new_enemy_index = generateRandomNumber(game.monsters.length);
 		enemy_name = game.monsters[new_enemy_index].name;
