@@ -1,7 +1,6 @@
-var human = {
+var player = {
 	name: "Casper",
-	hp: 100,
+	hp: 10000,
 	damage: 12,
-	potions: 3,
-	gold: 0
+	potions: 3
 }
