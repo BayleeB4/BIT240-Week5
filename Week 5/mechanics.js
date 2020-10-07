@@ -79,7 +79,7 @@
 			+ "<br />" + "Health: " + player_health 
 			+ "<br />" + "Potions: " + player_potions
 			+ "<br />" + "Gold: " + this.player_gold;
-		}else if(player_potions === 0){alert("You have no more potions!");}
+		}else if(player_potions === 0){ alert("You have no more potions!"); }else if(player_health === 100) { alert("Your max health is 100!"); }
 	}
 	
 	function continueButton(){
